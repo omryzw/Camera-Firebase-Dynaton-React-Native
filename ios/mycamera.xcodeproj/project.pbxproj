@@ -20,6 +20,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A85F4AC9A2BC41E4B83F1809 /* libPods-mycamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF11BAB2BEE6434F6BE652C /* libPods-mycamera.a */; };
 		A9892906A2820EE9EF932E1D /* libPods-mycamera-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CED08A669212B3B2BD02DC /* libPods-mycamera-tvOS.a */; };
+		C7EB4EC224F40517005F601D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7EB4EC124F40516005F601D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mycamera/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9CED08A669212B3B2BD02DC /* libPods-mycamera-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mycamera-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50ADE6C0E139F7E1DE59F3A /* Pods-mycamera-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mycamera-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-mycamera-tvOS/Pods-mycamera-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C7EB4EC124F40516005F601D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E184A57E4328BF6C9A454E48 /* Pods-mycamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mycamera.release.xcconfig"; path = "Target Support Files/Pods-mycamera/Pods-mycamera.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -161,7 +163,6 @@
 				28263EC30684A93C83FC9D18 /* Pods-mycamera-tvOSTests.debug.xcconfig */,
 				0D99C0F71BEB9CC6BA3359EB /* Pods-mycamera-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -175,6 +176,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				C7EB4EC124F40516005F601D /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* mycamera */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* mycameraTests */,
@@ -342,6 +344,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C7EB4EC224F40517005F601D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
