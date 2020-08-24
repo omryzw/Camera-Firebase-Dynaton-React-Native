@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "33251182208",
+    "firebase_url": "https://mycamera-f3063.firebaseio.com",
+    "project_id": "mycamera-f3063",
+    "storage_bucket": "mycamera-f3063.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33251182208:android:6759d802786fe6f099c865",
+        "android_client_info": {
+          "package_name": "com.mycamera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33251182208-nkl5rsv529u3ohl8lmrj1rsjd8gehut8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArRrcVjky00faudKiXZjgixG37SAhWzy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33251182208-nkl5rsv529u3ohl8lmrj1rsjd8gehut8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "33251182208-cr8llh78mn6i55olcpjg04fpm9e8lcos.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.mycamera"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
