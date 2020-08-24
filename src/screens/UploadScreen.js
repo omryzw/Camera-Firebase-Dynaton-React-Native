@@ -75,13 +75,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#bbded6'
+    backgroundColor: '#ffffff'
   },
   selectButton: {
-    borderRadius: 5,
-    width: 150,
+    borderRadius: 3,
+    width: 400,
     height: 50,
-    backgroundColor: '#8ac6d1',
+    marginTop: 600,
+    backgroundColor: '#0000FF',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -115,9 +116,7 @@ const styles = StyleSheet.create({
 
  return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.selectButton} onPress={selectImage}>
-        <Text style={styles.buttonText}>Take Photo</Text>
-      </TouchableOpacity>
+      
       <View style={styles.imageContainer}>
         {image !== null ? (
           <Image source={{ uri: image.uri }} style={styles.imageBox} />
@@ -132,6 +131,9 @@ const styles = StyleSheet.create({
           </TouchableOpacity>
         )}
       </View>
+      <TouchableOpacity style={styles.selectButton} onPress={selectImage}>
+        <Text style={styles.buttonText}>Take Photo</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
