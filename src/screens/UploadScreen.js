@@ -13,12 +13,13 @@ import ImagePicker from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
 import { useState }from "react";
 import * as Progress from 'react-native-progress';
+
 export default function UploadScreen() {
+
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [transferred, setTransferred] = useState(0);
-  //...
-
+ 
   const selectImage = () => {
   const options = {
     maxWidth: 2000,
@@ -49,10 +50,10 @@ const uploadImage = async () => {
   const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
   setUploading(true);
   setTransferred(0);
+  // Firebase init
   const task = storage()
     .ref(filename)
     .putFile(uploadUri);
-  // set progress state
   task.on('state_changed', snapshot => {
     setTransferred(
       Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 10000
@@ -63,11 +64,13 @@ const uploadImage = async () => {
   } catch (e) {
     console.error(e);
   }
-  setUploading(false);
+  setUploading(false); // dismiss the progress bar
+  
   Alert.alert(
     'Success',
     'Photo(s) uploaded to Cloud'
   );
+
   setImage(null);
 };
 
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     width: 400,
     height: 50,
-    marginTop: 600,
+    marginTop: 650,
     backgroundColor: '#0000FF',
     alignItems: 'center',
     justifyContent: 'center'
@@ -90,14 +93,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 150,
     height: 50,
-    backgroundColor: '#ffb6b9',
+    backgroundColor: '#0000FF',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 20
   },
   buttonText: {
-    color: 'white',
-    fontSize: 18,
+    color: '#ffffff',
+    fontSize: 17,
     fontWeight: 'bold'
   },
   imageContainer: {
@@ -110,7 +113,9 @@ const styles = StyleSheet.create({
   },
   imageBox: {
     width: 300,
-    height: 300
+    height: 300,
+    borderRadius: 55,
+    
   }
 });
 
@@ -118,22 +123,30 @@ const styles = StyleSheet.create({
     <SafeAreaView style={styles.container}>
       
       <View style={styles.imageContainer}>
+
         {image !== null ? (
           <Image source={{ uri: image.uri }} style={styles.imageBox} />
         ) : null}
+
         {uploading ? (
           <View style={styles.progressBarContainer}>
             <Progress.Bar progress={transferred} width={300} />
           </View>
-        ) : (
+        ) : false}
+        
+        {image != null ?(
           <TouchableOpacity style={styles.uploadButton} onPress={uploadImage}>
             <Text style={styles.buttonText}>Upload to Cloud</Text>
           </TouchableOpacity>
-        )}
+        ) : null}
+
+
       </View>
+
       <TouchableOpacity style={styles.selectButton} onPress={selectImage}>
         <Text style={styles.buttonText}>Take Photo</Text>
       </TouchableOpacity>
+
     </SafeAreaView>
   );
 }
