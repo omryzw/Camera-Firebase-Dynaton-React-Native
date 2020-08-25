@@ -77,7 +77,7 @@ function deletePicture(url) {
   // Delete the file
   desertRef.delete().then(function() {
     // alert 
-    console.log('deleted successfully')
+    loadFiles()
   }).catch(function(error) {
     // Uh-oh, an error occurred!
     console.log(error)
@@ -128,6 +128,7 @@ function deletePicture(url) {
    return (
     <>
     <SafeAreaView style={styles.container}>
+      
     <View>
        { cloudFiles.map((item, key)=>(
         <TouchableHighlight onPress={() => formatUrlAndDelete(item)}>
