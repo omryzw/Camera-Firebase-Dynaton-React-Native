@@ -117,6 +117,15 @@ function deletePicture(url) {
     color: '#ffffff',
     fontSize: 17,
     fontWeight: 'bold'
+  },
+  delete: {
+    color: 'red',
+    fontSize: 17,
+    alignItems: 'center',
+    fontWeight: 'bold',
+    padding :5
+
+
   }
 
   });
@@ -131,9 +140,12 @@ function deletePicture(url) {
       
     <View>
        { cloudFiles.map((item, key)=>(
-        <TouchableHighlight onPress={() => formatUrlAndDelete(item)}>
+         <>
         <Image key={key} source={{ uri: item }} style={styles.avatar}/> 
+        <TouchableHighlight onPress={() => formatUrlAndDelete(item)}>
+        <Text style={styles.delete}> Delete</Text>
         </TouchableHighlight>
+        </>
         )
          )}
     </View>
