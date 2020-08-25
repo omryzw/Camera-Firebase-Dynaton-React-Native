@@ -1,4 +1,5 @@
 import React ,{useEffect}from 'react';
+
 import {
   View,
   SafeAreaView,
@@ -31,7 +32,6 @@ export default function CloudScreen() {
         })
         var results = await Promise.all(promises)
         setcloudFiles(results)
-        console.log(results)
       })
      
 }
@@ -50,6 +50,9 @@ if(cloudFiles == []){
     arrayToList(cloudFiles)
   }, [])
 }
+
+
+
 
 function arrayToList(array) {
   // convert response array to List to render in FlatList
