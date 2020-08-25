@@ -4,7 +4,9 @@ import {
   SafeAreaView,
   Text,
   TouchableOpacity,
+  TouchableHighlight,
   StyleSheet,
+  FlatList,
   Platform,
   Alert,
   Image
@@ -13,6 +15,7 @@ import ImagePicker from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
 import { useState }from "react";
 import * as Progress from 'react-native-progress';
+
 
 export default function UploadScreen() {
 
@@ -29,6 +32,8 @@ export default function UploadScreen() {
       path: 'images'
     }
   };
+
+
   ImagePicker.showImagePicker(options, response => {
     if (response.didCancel) {
       console.log('User cancelled image picker');
@@ -52,7 +57,7 @@ const uploadImage = async () => {
   setTransferred(0);
   // Firebase init
   const task = storage()
-    .ref(filename)
+    .ref('files/' + filename)
     .putFile(uploadUri);
   task.on('state_changed', snapshot => {
     setTransferred(
@@ -68,7 +73,7 @@ const uploadImage = async () => {
   
   Alert.alert(
     'Success',
-    'Photo(s) uploaded to Cloud'
+    'Uploaded to Cloud'
   );
 
   setImage(null);
@@ -84,10 +89,13 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     width: 400,
     height: 50,
-    marginTop: 650,
+    marginTop: 560,
     backgroundColor: '#0000FF',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  avatar: {
+    width: 120, height: 120
   },
   uploadButton: {
     borderRadius: 5,
@@ -121,9 +129,13 @@ const styles = StyleSheet.create({
 
  return (
     <SafeAreaView style={styles.container}>
-      
-      <View style={styles.imageContainer}>
 
+    <TouchableHighlight>
+      <Image source = {require('/Users/gorongatapiwa/Documents/reactapps/mycamera/src/img/cloud.png')} style={styles.avatar}/>
+    </TouchableHighlight>
+ 
+    <View style={styles.imageContainer}>
+         
         {image !== null ? (
           <Image source={{ uri: image.uri }} style={styles.imageBox} />
         ) : null}
@@ -139,14 +151,11 @@ const styles = StyleSheet.create({
             <Text style={styles.buttonText}>Upload to Cloud</Text>
           </TouchableOpacity>
         ) : null}
-
-
       </View>
 
       <TouchableOpacity style={styles.selectButton} onPress={selectImage}>
         <Text style={styles.buttonText}>Take Photo</Text>
       </TouchableOpacity>
-
     </SafeAreaView>
   );
 }
