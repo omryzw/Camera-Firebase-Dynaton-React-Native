@@ -31,6 +31,7 @@ export default function CloudScreen() {
         })
         var results = await Promise.all(promises)
         setcloudFiles(results)
+        console.log(results)
       })
      
 }
@@ -62,17 +63,28 @@ function arrayToList(array) {
   return list;
 }
 
-const Item = ({ title }) => (
-  <View style={styles.item}>
-       <Image source={{ uri: title }} style={styles.avatar} />
-  </View>
-);
+
+function formatUrlForDeletion(unformattedUrl) {
+	var leadingUrl = "gs://mycamera-f3063.appspot.com/files/";
+	var filenameWithToken = unformattedUrl.substring(unformattedUrl.lastIndexOf('2F') + 2);
+	filenameWithToken = filenameWithToken.substring(0, filenameWithToken.indexOf('?'));
+	var finalUrl = leadingUrl + filenameWithToken
+	deletePicture(finalUrl)
+}
+
+function deletePicture(url) {
+  var desertRef = storage().refFromURL(url)
+  // Delete the file
+  desertRef.delete().then(function() {
+    // alert 
+    console.log('deleted successfully')
+  }).catch(function(error) {
+    // Uh-oh, an error occurred!
+    console.log(error)
+  });
 
   
- const renderItem = ({ item }) => (
-    <Item title={item.title} />
-  );
-  
+}
 
 
   const styles = StyleSheet.create({
@@ -109,13 +121,19 @@ const Item = ({ title }) => (
 
   });
 
+  function check(a){
+    console.log(a)
+  }
 
    return (
     <>
     <SafeAreaView style={styles.container}>
     <View>
        { cloudFiles.map((item, key)=>(
-        <Image key={key} source={{ uri: item }} style={styles.avatar} />)
+        <TouchableHighlight onPress={check(9)}>
+        <Image key={key} source={{ uri: item }} style={styles.avatar}/> 
+        </TouchableHighlight>
+        )
          )}
     </View>
  
