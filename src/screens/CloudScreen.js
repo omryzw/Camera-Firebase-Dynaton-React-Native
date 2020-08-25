@@ -3,12 +3,12 @@ import {
   View,
   SafeAreaView,
   Text,
-  TouchableOpacity,
-  TouchableHighlight,
-  StyleSheet,
   FlatList,
   Platform,
   Alert,
+  TouchableOpacity,
+  TouchableHighlight,
+  StyleSheet,
   Image
 } from 'react-native';
 import storage from '@react-native-firebase/storage';
@@ -19,31 +19,10 @@ import { StatusBar } from 'react-native';
 
 export default function CloudScreen() {
 
-
-  const [image, setImage] = useState(null);
   const [cloudFiles,setcloudFiles] = useState([]);
-
-  const [uploading, setUploading] = useState(false);
-
-
-   const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: '/Users/gorongatapiwa/Documents/reactapps/mycamera/src/img/cloud.png',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: '/Users/gorongatapiwa/Documents/reactapps/mycamera/src/img/cloud.png',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: '/Users/gorongatapiwa/Documents/reactapps/mycamera/src/img/cloud.png',
-  },
-];
 
  function  loadFiles() {
       // Get Photos from cloud
-      // Core Function
       const storageRef = storage().ref('files/')
       storageRef.listAll().then(async result => {
         const promises = result.items.map(async ref => {
@@ -104,9 +83,9 @@ const Item = ({ title }) => (
     marginTop:100
   },
   avatar:{
-    width: 120, height: 120,
-    marginBottom: 40,
-    borderRadius: 3
+    width: 90, height: 90,
+    marginTop: 40,
+    borderRadius: 15
     
   },
   logo:{
@@ -134,20 +113,18 @@ const Item = ({ title }) => (
    return (
     <>
     <SafeAreaView style={styles.container}>
-
-    <Image source = {require('/Users/gorongatapiwa/Documents/reactapps/mycamera/src/img/back.png')} style={styles.logo}/>
-    <Text>Your Files</Text>
     <View>
        { cloudFiles.map((item, key)=>(
         <Image key={key} source={{ uri: item }} style={styles.avatar} />)
          )}
     </View>
  
-        
     </SafeAreaView>
+
     <TouchableOpacity style={styles.selectButton} onPress={loadFiles}>
         <Text style={styles.buttonText}>Refresh</Text>
-      </TouchableOpacity>
+    </TouchableOpacity>
+
     </>
 
     );

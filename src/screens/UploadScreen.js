@@ -20,8 +20,8 @@ import * as Progress from 'react-native-progress';
 export default function UploadScreen() {
 
   const [image, setImage] = useState(null);
-  const [uploading, setUploading] = useState(false);
   const [transferred, setTransferred] = useState(0);
+  const [uploading, setUploading] = useState(false);
  
   const selectImage = () => {
   const options = {
@@ -36,11 +36,11 @@ export default function UploadScreen() {
 
   ImagePicker.showImagePicker(options, response => {
     if (response.didCancel) {
-      console.log('User cancelled image picker');
+      console.log('cancelled');
     } else if (response.error) {
-      console.log('ImagePicker Error: ', response.error);
+      console.log('Image Picker Error: ', response.error);
     } else if (response.customButton) {
-      console.log('User tapped custom button: ', response.customButton);
+      console.log('Button Pressed: ', response.customButton);
     } else {
       const source = { uri: response.uri };
       console.log(source);
@@ -73,31 +73,42 @@ const uploadImage = async () => {
   
   Alert.alert(
     'Success',
-    'Uploaded to Cloud'
+    'Uploaded to Cloud, Press Top Button To View'
   );
 
   setImage(null);
 };
 
 const styles = StyleSheet.create({
+
   container: {
+
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#ffffff'
+    
   },
+
   selectButton: {
+
     borderRadius: 3,
-    width: 400,
+    width: 420,
     height: 50,
-    marginTop: 560,
+    marginTop: 645,
     backgroundColor: '#0000FF',
     alignItems: 'center',
     justifyContent: 'center'
+
   },
+  
   avatar: {
+
     width: 120, height: 120
+
   },
+
   uploadButton: {
+
     borderRadius: 5,
     width: 150,
     height: 50,
@@ -105,21 +116,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 20
+
   },
+  
   buttonText: {
+
     color: '#ffffff',
     fontSize: 17,
     fontWeight: 'bold'
+
   },
+
   imageContainer: {
+
     marginTop: 30,
     marginBottom: 50,
     alignItems: 'center'
+
   },
+
   progressBarContainer: {
+
     marginTop: 20
+
   },
+
   imageBox: {
+
     width: 300,
     height: 300,
     borderRadius: 55,
@@ -128,33 +151,30 @@ const styles = StyleSheet.create({
 });
 
  return (
-    <SafeAreaView style={styles.container}>
 
-    <TouchableHighlight>
-      <Image source = {require('/Users/gorongatapiwa/Documents/reactapps/mycamera/src/img/cloud.png')} style={styles.avatar}/>
-    </TouchableHighlight>
- 
-    <View style={styles.imageContainer}>
+    <SafeAreaView style = { styles.container }>
+
+    <View style = { styles.imageContainer }>
          
-        {image !== null ? (
-          <Image source={{ uri: image.uri }} style={styles.imageBox} />
-        ) : null}
+        { image !== null ? (
+          <Image source = {{ uri: image.uri }} style = {styles.imageBox} />
+        ) : null }
 
-        {uploading ? (
-          <View style={styles.progressBarContainer}>
-            <Progress.Bar progress={transferred} width={300} />
+        { uploading ? (
+          <View style = {styles.progressBarContainer}>
+            <Progress.Bar progress = {transferred} width = {300} />
           </View>
-        ) : false}
+        ) : false }
         
-        {image != null ?(
-          <TouchableOpacity style={styles.uploadButton} onPress={uploadImage}>
-            <Text style={styles.buttonText}>Upload to Cloud</Text>
+        { image != null ?(
+          <TouchableOpacity style={ styles.uploadButton } onPress={ uploadImage }>
+            <Text style = { styles.buttonText }>Upload to Cloud</Text>
           </TouchableOpacity>
-        ) : null}
-      </View>
+        ) : null }
 
-      <TouchableOpacity style={styles.selectButton} onPress={selectImage}>
-        <Text style={styles.buttonText}>Take Photo</Text>
+      </View>
+      <TouchableOpacity style = { styles.selectButton } onPress = { selectImage }>
+        <Text style = { styles.buttonText }>Take Photo</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
