@@ -64,7 +64,7 @@ function arrayToList(array) {
 }
 
 
-function formatUrlForDeletion(unformattedUrl) {
+function formatUrlAndDelete(unformattedUrl) {
 	var leadingUrl = "gs://mycamera-f3063.appspot.com/files/";
 	var filenameWithToken = unformattedUrl.substring(unformattedUrl.lastIndexOf('2F') + 2);
 	filenameWithToken = filenameWithToken.substring(0, filenameWithToken.indexOf('?'));
@@ -130,7 +130,7 @@ function deletePicture(url) {
     <SafeAreaView style={styles.container}>
     <View>
        { cloudFiles.map((item, key)=>(
-        <TouchableHighlight onPress={check(9)}>
+        <TouchableHighlight onPress={() => formatUrlAndDelete(item)}>
         <Image key={key} source={{ uri: item }} style={styles.avatar}/> 
         </TouchableHighlight>
         )
